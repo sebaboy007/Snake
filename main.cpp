@@ -26,7 +26,7 @@ void gotoxy(int x, int y)
 
 
 int max_score;
-int k=4,q=2,game_open=1,level,marime;
+int k=4,q=2,game_open=1,level,Size;
 void task1()
 {
     int c = 0;
@@ -58,22 +58,22 @@ void task2()
     int a[100],b[100],l,pozi,pozj;
     a[1]=1;
     b[1]=1;
-    pozi=rand()%marime+1;
-    pozj=rand()%marime+1;
+    pozi=rand()%Size+1;
+    pozj=rand()%Size+1;
     while(game_open)
     {
         cout<<"SCOR: "<<q-2<<" MAX SCORE:"<<max_score<<endl;
-        for(int i=1;i<=marime;i++)
+        for(int i=1;i<=Size;i++)
         {
-            for(int j=1;j<=marime;j++)
+            for(int j=1;j<=Size;j++)
             {
 
                 if(i==pozi && j==pozj)
                     if(a[1]==i && b[1]==j)
                     {
                         q++;
-                        pozi=rand()%marime+1;
-                        pozj=rand()%marime+1;
+                        pozi=rand()%Size+1;
+                        pozj=rand()%Size+1;
                     }
                     else
                         cout<<"o ";
@@ -95,7 +95,7 @@ void task2()
             cout<<"*";
             cout<<endl;
         }
-        for(int i=1;i<=marime;i++)
+        for(int i=1;i<=Size;i++)
             cout<<"* ";
         cout<<"*"<<endl;
 
@@ -122,12 +122,12 @@ void task2()
             b[1]++;
         }
         if(a[1]<1)
-            a[1]=marime;
-        if(a[1]>marime)
+            a[1]=Size;
+        if(a[1]>Size)
             a[1]=1;
         if(b[1]<1)
-            b[1]=marime;
-        if(b[1]>marime)
+            b[1]=Size;
+        if(b[1]>Size)
             b[1]=1;
         for(int i=2;i<=q;i++)
             if(a[1]==a[i] && b[1]==b[i])
@@ -141,7 +141,6 @@ void task2()
 }
 int main()
 {
-    // Constructs the new thread and runs it. Does not block execution.
     ifstream fin("scor.in");
     fin>>max_score;
     fin.close();
@@ -150,14 +149,13 @@ int main()
     cin>>level;
     cout<<endl;
     cout<<"SELECTEAZA MARIME TERENULUI DE JOC (3-50) " ;
-    cin>>marime;
+    cin>>Size;
     Sleep(500);
     system("CLS");
     thread t1(task1);
     thread t2(task2);
 
-    // Do other things...
-    // Makes the main thread wait for the new thread to finish execution, therefore blocks its own execution.
+
     while(game_open)
     {
 
