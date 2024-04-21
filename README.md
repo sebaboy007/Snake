@@ -1,0 +1,3 @@
+-create a c++ project;
+-paste the code in the main.cpp file;
+-create a file named "scor.in";
